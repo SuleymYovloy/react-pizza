@@ -1,4 +1,4 @@
-function PizzaBlock(props, title) {
+function PizzaBlock(props) {
   console.log(props);
 
   return (
