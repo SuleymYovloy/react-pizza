@@ -4,6 +4,14 @@
   border-bottom: 1px solid $gray-line;
   padding: 40px 0;
 
+  @media (max-width: 670px) {
+    &__descr {
+      p {
+        display: none;
+      }
+    }
+  }
+
   .container {
     display: flex;
     align-items: center;
@@ -23,6 +31,15 @@
       letter-spacing: 1%;
       text-transform: uppercase;
       font-weight: 800;
+
+      @media (max-width: 670px) {
+        font-size: 20px;
+        padding-top: 5px;
+      }
+
+      @media (max-width: 520px) {
+        display: none;
+      }
     }
 
     p {
