@@ -1,7 +1,7 @@
 import React from 'react';
-import { SearchContext } from '../../App';
 
 import styles from './Search.module.scss';
+import { SearchContext } from './../../App';
 
 const Search = () => {
   const { searchValue, setSearchValue } = React.useContext(SearchContext);
@@ -24,7 +24,7 @@ const Search = () => {
       {searchValue && (
         <svg
           className={styles.clearIcon}
-          onClick={(event) => setSearchValue((event.target.value = ''))}
+          onClick={() => setSearchValue('')}
           height="48"
           viewBox="0 0 48 48"
           width="48"

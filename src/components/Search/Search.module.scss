@@ -9,6 +9,10 @@
   width: 400px;
   border-radius:  10px;
   font-size: 18px;
+
+  &:focus {
+    border: 1px solid rgb(0, 0, 0, 0.2)
+  }
 }
 
 .searchIcon {
