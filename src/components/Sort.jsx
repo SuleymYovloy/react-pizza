@@ -14,16 +14,31 @@ export const sortList = [
 function Sort() {
   const despatch = useDispatch();
   const sort = useSelector((state) => state.filter.sort);
+  const sortRef = React.useRef();
 
   const [isVisible, setIsVisible] = React.useState(false);
+
+  const handleOutsideClick = (event) => {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(sortRef.current)) {
+      setIsVisible(false);
+      console.log('clock');
+    }
+  };
 
   const onClickListItem = (obj) => {
     despatch(setSort(obj));
     setIsVisible(false);
   };
 
+  React.useEffect(() => {
+    document.body.addEventListener('click', handleOutsideClick);
+
+    return () => document.body.removeEventListener('click', handleOutsideClick);
+  }, []);
+
   return (
-    <div className="sort">
+    <div ref={sortRef} className="sort">
       <div className="sort__label">
         <svg
           width="10"
