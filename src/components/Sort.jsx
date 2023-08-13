@@ -22,7 +22,6 @@ function Sort() {
     const path = event.path || (event.composedPath && event.composedPath());
     if (!path.includes(sortRef.current)) {
       setIsVisible(false);
-      console.log('clock');
     }
   };
 

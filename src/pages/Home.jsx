@@ -32,7 +32,7 @@ const Home = () => {
     dispatch(setCurrentPage(page));
   };
 
-  const fetchPizzas = () => {
+  const fetchPizzas = async () => {
     setIsLoading(true);
 
     const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
@@ -40,14 +40,17 @@ const Home = () => {
     const category = categoryId > 0 ? `category=${categoryId}` : '';
     const search = searchValue ? `&search=${searchValue}` : '';
 
-    axios
-      .get(
-        `https://63ad763c3e465169165afd84.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
-      )
-      .then((res) => {
-        setItems(res.data);
-        setIsLoading(false);
-      });
+    try {
+      const res = await axios.get(
+        `https://163ad763c3e465169165afd84.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
+      );
+      setItems(res.data);
+      setIsLoading(false);
+      console.log(555);
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
 
     window.scrollTo(0, 0);
   };

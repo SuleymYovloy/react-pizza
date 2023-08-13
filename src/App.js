@@ -8,7 +8,6 @@ import { Routes, Route } from 'react-router-dom';
 import './scss/app.scss';
 
 export const SearchContext = React.createContext();
-console.log('');
 
 function App() {
   const [searchValue, setSearchValue] = React.useState('');
