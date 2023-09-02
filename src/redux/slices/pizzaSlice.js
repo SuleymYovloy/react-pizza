@@ -4,7 +4,7 @@ import axios from 'axios'
 // Асинхронный экшен
 export const fetchPizzas = createAsyncThunk(
   'pizza/fetchPizzasStatus',
-  async (params) => {
+  async (params, thunkAPI) => {
     const {
       sortBy,
       order,
@@ -16,6 +16,7 @@ export const fetchPizzas = createAsyncThunk(
     const { data } = await axios.get(
       `https://63ad763c3e465169165afd84.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
     );
+
     return data // вернет ответ 
   }
 )
@@ -45,12 +46,14 @@ const pizzaSlice = createSlice({
       state.items = action.payload 
       state.status = 'success'
     },
-    [fetchPizzas.rejected]: (state, action) => {
+    [fetchPizzas.rejected]: (state) => {
       state.status = 'error'
       state.items = [];
     }
   }
 });
+
+export const selectPizzaData = (state) => state.pizza;
 
 export const { setItems } = pizzaSlice.actions;
 export default pizzaSlice.reducer;

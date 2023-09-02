@@ -1,12 +1,12 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../../redux/slices/cartSlice';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 
-const typeNames = ['тонкое', 'традиционное'];
+const typeNames = ["тонкое", "традиционное"];
 
 function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
   const dispatch = useDispatch();
-  const cartItem = useSelector((state) => state.cart.items.find((obj) => obj.id === id));
+  const cartItem = useSelector(selectCartItemById(id)); // Эта функция ожидает 2 параметра id и state
   const [activeType, setActiveType] = React.useState(0);
   const [activeSize, setActiveSize] = React.useState(0);
 
@@ -41,7 +41,7 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
               <li
                 key={typeId}
                 onClick={() => setActiveType(typeId)}
-                className={activeType === typeId ? 'active' : ''}
+                className={activeType === typeId ? "active" : ""}
               >
                 {typeNames[typeId]}
               </li>
@@ -52,7 +52,7 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
               <li
                 key={i}
                 onClick={() => setActiveSize(i)}
-                className={activeSize === i ? 'active' : ''}
+                className={activeSize === i ? "active" : ""}
               >
                 {size} см.
               </li>
@@ -61,7 +61,10 @@ function PizzaBlock({ id, title, price, imageUrl, sizes, types }) {
         </div>
         <div className="pizza-block__bottom">
           <div className="pizza-block__price">от {price} ₽</div>
-          <button onClick={onClickAdd} className="button button--outline button--add">
+          <button
+            onClick={onClickAdd}
+            className="button button--outline button--add"
+          >
             <svg
               width="12"
               height="12"

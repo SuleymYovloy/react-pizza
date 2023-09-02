@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.setItems = exports.fetchPizzas = void 0;
+exports["default"] = exports.setItems = exports.selectPizzaData = exports.fetchPizzas = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 
@@ -16,7 +16,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // Асинхронный экшен
-var fetchPizzas = (0, _toolkit.createAsyncThunk)('pizza/fetchPizzasStatus', function _callee(params) {
+var fetchPizzas = (0, _toolkit.createAsyncThunk)('pizza/fetchPizzasStatus', function _callee(params, thunkAPI) {
   var sortBy, order, category, search, currentPage, _ref, data;
 
   return regeneratorRuntime.async(function _callee$(_context) {
@@ -61,11 +61,17 @@ var pizzaSlice = (0, _toolkit.createSlice)({
   }), _defineProperty(_extraReducers, fetchPizzas.fulfilled, function (state, action) {
     state.items = action.payload;
     state.status = 'success';
-  }), _defineProperty(_extraReducers, fetchPizzas.rejected, function (state, action) {
+  }), _defineProperty(_extraReducers, fetchPizzas.rejected, function (state) {
     state.status = 'error';
     state.items = [];
   }), _extraReducers)
 });
+
+var selectPizzaData = function selectPizzaData(state) {
+  return state.pizza;
+};
+
+exports.selectPizzaData = selectPizzaData;
 var setItems = pizzaSlice.actions.setItems;
 exports.setItems = setItems;
 var _default = pizzaSlice.reducer;
