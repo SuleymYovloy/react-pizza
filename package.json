@@ -1,35 +1,47 @@
 {
   "name": "react-pizza-v2",
   "version": "0.1.0",
+  "homepage": "https://gapurevloev.github.io/react_pizza_v2/",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@reduxjs/toolkit": "^1.8.5",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^29.5.4",
-    "@types/node": "^20.5.9",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "axios": "^1.3.4",
+    "@types/jest": "^29.0.2",
+    "@types/lodash.debounce": "^4.0.7",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
+    "@types/react-loadable": "^5.5.6",
+    "axios": "^0.27.2",
+    "classnames": "^2.3.1",
     "lodash.debounce": "^4.0.8",
-    "qs": "^6.11.1",
-    "react": "^18.2.0",
+    "qs": "^6.11.0",
+    "react": "^18.1.0",
     "react-content-loader": "^6.2.0",
-    "react-dom": "^18.2.0",
-    "react-paginate": "^8.1.4",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.6.1",
+    "react-dom": "^18.1.0",
+    "react-loadable": "^5.5.0",
+    "react-paginate": "^8.1.3",
+    "react-redux": "^8.0.2",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "sass": "^1.57.1",
-    "typescript": "^5.2.2",
+    "typescript": "^4.8.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && npm run build-gh-pages",
+    "build-gh-pages": "gh-pages -d build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -42,5 +54,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0",
+    "prettier": "2.7.1",
+    "sass": "^1.54.9"
   }
 }
