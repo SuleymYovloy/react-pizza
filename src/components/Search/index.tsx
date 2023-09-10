@@ -13,9 +13,8 @@ const Search: React.FC = () => {
     dispatch(setSearchValue(""));
     setValue("");
     inputRef.current?.focus();
+    // ? - оператор опциональной последовательности
   };
-
-  // ? - оператор опциональной последовательности
 
   const updateSearchValue = React.useCallback(
     debounce((str: string) => {
