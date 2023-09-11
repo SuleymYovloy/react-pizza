@@ -16,6 +16,7 @@ const Search: React.FC = () => {
     // ? - оператор опциональной последовательности
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const updateSearchValue = React.useCallback(
     debounce((str: string) => {
       dispatch(setSearchValue(str));
