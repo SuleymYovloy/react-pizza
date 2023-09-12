@@ -1,14 +1,16 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import Categories from "../components/Categories";
 import { sortList } from "../components/Sort";
-import Sort from "../components/Sort";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import PizzaBlock from "../components/PizzaBlock/index";
-import Pagination from "../components/Pagination";
-import { fetchPizzas } from "../redux/pizza/asyncActions"; // Убедитесь, что путь указан правильно
+import { fetchPizzas } from "../redux/pizza/asyncActions";
+
+import {
+  Skeleton,
+  PizzaBlock,
+  Categories,
+  Pagination,
+  Sort,
+} from "../components";
 
 import { useAppDispatch } from "../redux/store";
 import { selectFilter } from "../redux/filter/selectors";
@@ -20,6 +22,11 @@ const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
+
+  import("../utils/math").then((math) => {
+    console.log(math.add(16, 26));
+  });
+
   const { items, status } = useSelector(selectPizzaData);
   const { categoryId, sort, currentPage, searchValue } =
     useSelector(selectFilter);
