@@ -1,7 +1,7 @@
 {
   "name": "react-pizza-v2",
   "version": "0.1.0",
-  "homepage": "https://gapurevloev.github.io/react_pizza_v2/",
+  "homepage": "https://SuleymYovloy.github.io/react-pizza",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
